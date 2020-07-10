@@ -65,19 +65,20 @@ func getDataModel(sm *kaos.ServiceModel) *UIModel {
 
 type gridConf struct {
 	Field     string   `json:"field"`
-	FieldType string   `json:"fieldtype"`
+	FieldType string   `json:"fieldType"`
 	Format    string   `json:"format"`
 	Label     string   `json:"label"`
 	Align     string   `json:"align"`
 	Width     string   `json:"width"`
 	Show      string   `json:"show"`
-	UseList   bool     `json:"uselist"`
-	ListItems []string `json:"listitems"`
+	UseList   bool     `json:"useList"`
+	ListItems []string `json:"listItems"`
+	Control   string   `json:"control"`
 }
 
 type GridConfigResult struct {
-	SearchFields []string    `json:"searchfields"`
-	KeyField     string      `json:"keyfield"`
+	SearchFields []string    `json:"searchFields"`
+	KeyField     string      `json:"keyField"`
 	Fields       []*gridConf `json:"fields"`
 }
 
@@ -99,6 +100,7 @@ func GridConfig(a *UIModel, name string) (*GridConfigResult, error) {
 						Show:      fm.GridShow,
 						UseList:   fm.UseList,
 						ListItems: fm.ListItems,
+						Control:   fm.Control,
 					})
 				}
 			}
@@ -124,6 +126,7 @@ func GridConfig(a *UIModel, name string) (*GridConfigResult, error) {
 					Show:      fm.GridShow,
 					UseList:   fm.UseList,
 					ListItems: fm.ListItems,
+					Control:   fm.Control,
 				})
 			}
 		}
