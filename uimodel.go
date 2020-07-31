@@ -175,5 +175,9 @@ func getMetaFromStructField(v reflect.Value, tf reflect.StructField, mdl *UIMode
 	}
 	mdl.KeyFields = keyFields
 
+	if isSearchField := tagDefault(tag, "search", "0"); isSearchField == "1" || strings.ToLower(isSearchField) == "true" {
+		mdl.SearchFields = append(mdl.SearchFields, fieldName)
+	}
+
 	return fm
 }
