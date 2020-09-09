@@ -97,7 +97,14 @@ func getMetaFromStructField(v reflect.Value, tf reflect.StructField, mdl *UIMode
 		fieldType = strings.ToLower(tf.Type.String())
 	}
 
-	fieldName := strings.ToLower(tagDefault(tag, toolkit.TagName(), tf.Name))
+	fieldName := tagDefault(tag, toolkit.TagName(), tf.Name)
+	switch FieldCase {
+	case toolkit.CaseLower:
+		fieldName = strings.ToLower(fieldName)
+
+	case toolkit.CaseUpper:
+		fieldName = strings.ToUpper(fieldName)
+	}
 	fm.ID = tf.Name
 	fm.Field = fieldName
 	fm.GridShow = tagMemberDefault(tag, "grid-show", []string{"show", "include", "hide"}, defaultGridShow)

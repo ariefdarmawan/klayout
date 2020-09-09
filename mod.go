@@ -9,6 +9,11 @@ import (
 
 	"git.kanosolution.net/kano/kaos"
 	"git.kanosolution.net/koloni/crowd"
+	"github.com/eaciit/toolkit"
+)
+
+var (
+	FieldCase = toolkit.CaseLower
 )
 
 type mod struct {
